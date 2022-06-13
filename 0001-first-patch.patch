@@ -1,0 +1,43 @@
+From 0fe16e23a16fc50ba8b028b5fcd0c746d0bd220a Mon Sep 17 00:00:00 2001
+From: Luiz Fernando Bueno Rosa <luizfernando5687@gmail.com>
+Date: Sun, 12 Jun 2022 22:56:51 -0300
+Subject: [PATCH] first patch
+
+---
+ drivers/staging/greybus/audio_manager_module.c | 6 +++---
+ init/main.c                                    | 2 ++
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/greybus/audio_manager_module.c b/drivers/staging/greybus/audio_manager_module.c
+index 0a0f0a394..8d0230adc 100644
+--- a/drivers/staging/greybus/audio_manager_module.c
++++ b/drivers/staging/greybus/audio_manager_module.c
+@@ -70,9 +70,9 @@ static void gb_audio_module_release(struct kobject *kobj)
+ 	kfree(module);
+ }
+ 
+-static ssize_t gb_audio_module_name_show(
+-	struct gb_audio_manager_module *module,
+-	struct gb_audio_manager_module_attribute *attr, char *buf)
++static ssize_t gb_audio_module_name_show
++(struct gb_audio_manager_module *module,
++struct gb_audio_manager_module_attribute *attr, char *buf)
+ {
+ 	return sprintf(buf, "%s", module->desc.name);
+ }
+diff --git a/init/main.c b/init/main.c
+index 0ee39cdcf..04f75946b 100644
+--- a/init/main.c
++++ b/init/main.c
+@@ -1519,6 +1519,8 @@ static int __ref kernel_init(void *unused)
+ 
+ 	rcu_end_inkernel_boot();
+ 
++	printk(KERN_ERR "###################################\nI can hack the Linux kernel!\n###################################\n");
++
+ 	do_sysctl_args();
+ 
+ 	if (ramdisk_execute_command) {
+-- 
+2.25.1
+
